@@ -37,8 +37,8 @@ async def chat(request: ChatRequest):
         # Initialize OpenAI client with the provided API key
         client = OpenAI(api_key=request.api_key)
         
-        # Create an async generator function for streaming responses
-        async def generate():
+        # Create a sync generator function for streaming responses
+        def generate():
             # Create a streaming chat completion request
             stream = client.chat.completions.create(
                 model=request.model,
