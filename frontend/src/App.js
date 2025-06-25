@@ -35,13 +35,11 @@ function App() {
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let done = false;
-      let fullText = '';
       while (!done) {
         const { value, done: doneReading } = await reader.read();
         done = doneReading;
         if (value) {
           const chunk = decoder.decode(value);
-          fullText += chunk;
           setResponse((prev) => prev + chunk);
         }
       }
